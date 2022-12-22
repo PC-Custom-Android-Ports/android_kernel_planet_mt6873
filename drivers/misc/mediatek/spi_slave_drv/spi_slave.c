@@ -131,7 +131,7 @@ static int spislv_sync_sub(u32 addr, void *val, u32 len, bool is_read)
 {
 	int ret = 0, i = 0;
 	struct spi_message msg;
-	struct spi_transfer x[3] = {0}; /* CW/CR, WD/RD, WS */
+	struct spi_transfer x[3] = { { 0 } }; /* CW/CR, WD/RD, WS */
 	void *local_buf = NULL;
 	u8 mtk_spi_buffer[MTK_SPI_BUFSIZ];
 	u8 cmd_write_sta[2] = {CMD_WS, 0xff};

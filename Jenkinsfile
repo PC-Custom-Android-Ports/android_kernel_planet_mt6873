@@ -40,12 +40,6 @@ pipeline {
             }
         }
 
-        stage('Copy boot image to master node') {
-            steps {
-                sh 'cp /out/root-boot.img "${WORKSPACE}/astro_root_boot_a.img"'
-            }
-        }
-
         stage('Publish boot image on S3') {
             steps {
                archiveArtifacts artifacts: 'astro_root_boot_a.img', onlyIfSuccessful: true

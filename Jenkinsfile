@@ -9,7 +9,7 @@ pipeline {
         stage('Download kernel') {
             steps {
                     sh '''
-                        bash /opt/common/scripts/1_fetch_kernel.sh main
+                        bash /opt/common/scripts/1_fetch_kernel.sh keyboard-patch-android android_kernel_planet_mt6873
                     '''
                 }
         }

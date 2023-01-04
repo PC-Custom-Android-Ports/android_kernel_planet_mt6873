@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Download kernel') {
             steps {
-                    sh 'bash /opt/common/scripts/1_fetch_kernel.sh android_kernel_planet_mt6873 rooted-stock-android'
+                    sh 'bash /opt/common/scripts/1_fetch_kernel.sh android_kernel_planet_mt6873 rooted-android'
                 }
         }
 

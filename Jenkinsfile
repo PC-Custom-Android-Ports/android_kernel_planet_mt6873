@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build kernel') {
             steps {
-                   sh bash /opt/common/scripts/2_build_kernel.sh k6873v1_64_defconfig 
+                   sh 'bash /opt/common/scripts/2_build_kernel.sh k6873v1_64_defconfig'
                 }
         }
 

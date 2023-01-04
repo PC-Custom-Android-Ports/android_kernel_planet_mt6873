@@ -8,17 +8,13 @@ pipeline {
     stages {
         stage('Download kernel') {
             steps {
-                    sh '''
-                        bash /opt/common/scripts/1_fetch_kernel.sh android_kernel_planet_mt6873 rooted-stock-android
-                    '''
+                    sh 'bash /opt/common/scripts/1_fetch_kernel.sh android_kernel_planet_mt6873 rooted-stock-android'
                 }
         }
 
         stage('Build kernel') {
             steps {
-                    sh '''
-                        bash /opt/common/scripts/2_build_kernel.sh k6873v1_64_defconfig
-                    '''
+                    sh 'bash /opt/common/scripts/2_build_kernel.sh k6873v1_64_defconfig'
                 }
         }
 

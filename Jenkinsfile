@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
+    }
+    
     agent {
         node {
             label 'android-boot-image-builder'
@@ -29,13 +33,13 @@ pipeline {
 
         stage('Copy boot image to master node') {
             steps {
-                sh 'cp /out/boot.img "${WORKSPACE}/astro_boot_a-keyboard-patch.img"'
+                sh 'cp /out/boot.img "${WORKSPACE}/astro_boot_${SHORT_COMMIT}_a-keyboard-patch.img"'
             }
         }
 
         stage('Publish boot image on S3') {
             steps {
-               archiveArtifacts artifacts: 'astro_boot_a-keyboard-patch.img', onlyIfSuccessful: true
+               archiveArtifacts artifacts: 'astro_boot_${SHORT_COMMIT}_a-keyboard-patch.img', onlyIfSuccessful: true
             }
         }
   }

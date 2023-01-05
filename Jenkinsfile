@@ -39,7 +39,7 @@ pipeline {
 
         stage('Publish boot image on S3') {
             steps {
-               archiveArtifacts artifacts: 'astro_boot_${SHORT_COMMIT}_a-keyboard-patch.img', onlyIfSuccessful: true
+               archiveArtifacts artifacts: 'astro_boot_*_a-keyboard-patch.img', onlyIfSuccessful: true
             }
         }
   }

@@ -42,7 +42,7 @@ pipeline {
 
         stage('Publish boot image on S3') {
             steps {
-               archiveArtifacts artifacts: 'astro_root_boot_${SHORT_COMMIT}_a.img', onlyIfSuccessful: true
+               archiveArtifacts artifacts: 'astro_root_boot_*_a.img', onlyIfSuccessful: true
             }
         }
   }

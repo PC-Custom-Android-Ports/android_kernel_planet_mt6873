@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        SHORT_COMMIT = "${GIT_COMMIT[0..7]}"
+    }
+    
     agent {
         node {
             label 'android-root-image-builder'
@@ -31,14 +35,14 @@ pipeline {
             steps {
                 sh '''
                     bash /opt/magisk-tools/patch.sh /out/boot.img
-                    cp /out/root-boot.img "${WORKSPACE}/astro_root_boot_a.img"
+                    cp /out/root-boot.img "${WORKSPACE}/astro_root_boot_${SHORT_COMMIT}_a.img"
                     '''
             }
         }
 
         stage('Publish boot image on S3') {
             steps {
-               archiveArtifacts artifacts: 'astro_root_boot_a.img', onlyIfSuccessful: true
+               archiveArtifacts artifacts: 'astro_root_boot_${SHORT_COMMIT}_a.img', onlyIfSuccessful: true
             }
         }
   }

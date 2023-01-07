@@ -35,14 +35,14 @@ pipeline {
             steps {
                 sh '''
                     bash /opt/magisk-tools/patch.sh /out/boot.img
-                    cp /out/root-boot.img "${WORKSPACE}/astro_root_boot_${SHORT_COMMIT}_a.img"
+                    cp /out/root-boot.img "${WORKSPACE}/astro_root_boot_a_${SHORT_COMMIT}.img"
                     '''
             }
         }
 
         stage('Publish boot image on S3') {
             steps {
-               archiveArtifacts artifacts: 'astro_root_boot_*_a.img', onlyIfSuccessful: true
+               archiveArtifacts artifacts: 'astro_root_boot_a_*.img', onlyIfSuccessful: true
             }
         }
   }

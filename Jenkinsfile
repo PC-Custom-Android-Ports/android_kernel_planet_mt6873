@@ -33,13 +33,13 @@ pipeline {
 
         stage('Copy boot image to master node') {
             steps {
-                sh 'cp /out/boot.img "${WORKSPACE}/astro_boot_${SHORT_COMMIT}_a-keyboard-patch.img"'
+                sh 'cp /out/boot.img "${WORKSPACE}/astro_boot_a-keyboard-patch_${SHORT_COMMIT}.img"'
             }
         }
 
         stage('Publish boot image on S3') {
             steps {
-               archiveArtifacts artifacts: 'astro_boot_*_a-keyboard-patch.img', onlyIfSuccessful: true
+               archiveArtifacts artifacts: 'astro_boot_a-keyboard-patch_*.img', onlyIfSuccessful: true
             }
         }
   }
